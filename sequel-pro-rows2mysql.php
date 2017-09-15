@@ -4,7 +4,7 @@
    <strong>Resultado de las filas seleccionadas</strong>
    <table border="0" cellspacing="0">
       <?php
-         /* https://github.com/cuatl/Utils/blob/master/sequel-pro-rows2mysql.php */
+         /* https://tar.mx/archivo/2017/exportar-a-html-filas-seleccionadas-en-sequel-pro.html */
          $filas = [];
          while (false !== $data = fgetcsv(STDIN, 4096, "\t")) { $filas[] = $data; }
          if(empty($filas)) die("<p>No hay filas seleccionadas u ocurrió un error.</p>");
