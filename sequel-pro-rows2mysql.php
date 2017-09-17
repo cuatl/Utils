@@ -16,7 +16,7 @@
                $s = is_float($b)?number_format($b,2):$b;
                $align = preg_match('!\d+(?:\.\d+)?!',$b) ? ' class="text-right"':null;
                printf('<t%s%s>%s</t%s>',$c,$align,$s,$c);
-               $maxlen = strlen($s)>$maxlen?strlen($s):$maxlen;
+               $maxlen = strlen($s)>$maxlen&&$k==0?strlen($s):$maxlen;
             }
             print('</tr>');
          }
