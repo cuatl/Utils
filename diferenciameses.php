@@ -1,5 +1,5 @@
 <?php
-   /* número de meses entre dos fechas @ToRo https://tar.mx */
+   /* número de meses entre dos fechas @ToRo https://tar.mx https://tar.mx/archivo/2017/calcular-cuantos-meses-han-pasado-entre-dos-fechas-con-php.html */
    $fechas = [];
    //generamos algunas fechas al azar
    for($i=1;$i<=3;$i++) {
