@@ -1,54 +1,50 @@
 /*
- * Generar código verificador
+ * Crear y validar números de longitud fija con algoritmo de Luhn
  * @ToRo 2017
- * https://tar.mx/archivo/2016/crear-y-validar-numeros-de-longitud-fija-con-algoritmo-de-luhn.html
+ * https://tar.mx
+ * v1.0
  */
 import Foundation
-/* padding a la izquierda */
+//MARK: padding izquierdo
 extension String {
-    func padleft(total:Int,cad :String) -> String {
+    func left(total:Int, cadena: String) -> String {
         let pad = total - self.characters.count;
         if(pad < 1) { return self; }
-        else { return "".stringByPaddingToLength(pad, withString: cad, startingAtIndex: 0)+self }
+        else { return "".padding(toLength: pad, withPad: cadena, startingAt: 0)+self }
     }
 }
+//MARK: crear dígito
 func digito(cadena:String) -> Int {
-    var ncadena = Array(cadena.characters)  //convertimos a un arreglo
-    var sum = [Int](); var a = 2;           //variables iniciales
+    var ncadena = Array(cadena.characters); var sum = [Int](); var a = 2 ; var total = 0;
     //multiplicamos
     for i in 0...cadena.characters.count-1 {
         let d = ncadena[i]
         let n = Int(String(d))
-        if(a < 1) { a = 2 } // primer caracter *1, luego *2, etc.
-        sum.append(n!*a)    // añadimos a arreglo
-        a = a-1;            //
+        a = (a < 1) ? 2 : a //primer caracter *1, luego *2 y así.
+        sum.append(n!*a)    // añadimos al arreglo
+        a = a-1
     }
-    sum = sum.reverse()
+    sum.reverse()
+    //print(sum)
     //sumamos
-    var total=0;
-    for d in sum {
-        let ni = String(Int(d))
-        if(ni.characters.count == 1) { total += d }
-        else {
-            let da = Array(ni.characters) //es más de un dígito
-            for nd in da {
-                let suma = Int(String(nd))
-                total += suma!;
-            }
+    for numero in sum {
+        for chars in String(Int(numero)).characters {
+            let suma = Int(String(chars))
+            total += suma!
         }
     }
-    total %= 10             //base 10
-    return (total != 0) ? 10-total :  total
+    total %= 10             //base10
+    return (total != 0) ? 10-total : total
 }
-
-//
-let longitud = 5;           //longitud cadena
-let prefijo = "01";         //prefijo
-var numeros = [92,10,20];   //números de prueba
+//MARK: ejemplo
+let longitud = 5;           //longitud de relleno de cada número
+let prefijo  = "01";        //prefijo número
+let numeros  = [37,92,10,20,324]; //números de ejemplo
 for numero in numeros {
-    var original = String(numero)
-    var relleno = prefijo + original.padleft(longitud, cad: "0")
-    var digitov = digito(relleno)
-    var codigo = relleno + String(Int(digitov))
-    print("Inicial: \(original) - Relleno: \(relleno) - Dígito: \(digitov) - Código: \(codigo)")
+    let original = String(numero)
+    let relleno = prefijo + original.left(total: longitud, cadena: "0")
+    let digitov = digito(cadena: relleno)   //aquí obtiene el prefijo
+    let codigo = relleno + String(Int(digitov))
+    print("Final: \(codigo) Inicial: \(original) - Relleno \(relleno) Dígito verificador \(digitov)")
 }
+//eof
