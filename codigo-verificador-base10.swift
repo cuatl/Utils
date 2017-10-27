@@ -2,24 +2,22 @@
  * Crear y validar números de longitud fija con algoritmo de Luhn
  * @ToRo 2017
  * https://tar.mx
- * v1.0
+ * v1.1
  */
 import Foundation
 //MARK: padding izquierdo
 extension String {
     func left(total:Int, cadena: String) -> String {
         let pad = total - self.characters.count;
-        if(pad < 1) { return self; }
-        else { return "".padding(toLength: pad, withPad: cadena, startingAt: 0)+self }
+        return pad < 1 ? self : "".padding(toLength: pad, withPad: cadena, startingAt: 0)+self
     }
 }
 //MARK: crear dígito
 func digito(cadena:String) -> Int {
-    var ncadena = Array(cadena.characters); var sum = [Int](); var a = 2 ; var total = 0;
+    var sum = [Int](); var a = 2 ; var total = 0;
     //multiplicamos
-    for i in 0...cadena.characters.count-1 {
-        let d = ncadena[i]
-        let n = Int(String(d))
+    for i in cadena.characters {
+        let n = Int(String(i))
         a = (a < 1) ? 2 : a //primer caracter *1, luego *2 y así.
         sum.append(n!*a)    // añadimos al arreglo
         a = a-1
@@ -47,4 +45,4 @@ for numero in numeros {
     let codigo = relleno + String(Int(digitov))
     print("Final: \(codigo) Inicial: \(original) - Relleno \(relleno) Dígito verificador \(digitov)")
 }
-//eof
+//EOF
