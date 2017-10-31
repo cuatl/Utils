@@ -2,7 +2,7 @@
  * Crear y validar números de longitud fija con algoritmo de Luhn
  * @ToRo 2017
  * https://tar.mx
- * v1.1
+ * v1.2
  */
 import Foundation
 //MARK: padding izquierdo
@@ -14,16 +14,15 @@ extension String {
 }
 //MARK: crear dígito
 func digito(cadena:String) -> Int {
-    var sum = [Int](); var a = 2 ; var total = 0;
+    var sum = [Int](), a = 2, total = 0;
     //multiplicamos
     for i in cadena.characters {
         let n = Int(String(i))
         a = (a < 1) ? 2 : a //primer caracter *1, luego *2 y así.
         sum.append(n!*a)    // añadimos al arreglo
-        a = a-1
+        a -= 1
     }
     sum.reverse()
-    //print(sum)
     //sumamos
     for numero in sum {
         for chars in String(Int(numero)).characters {
@@ -37,7 +36,7 @@ func digito(cadena:String) -> Int {
 //MARK: ejemplo
 let longitud = 5;           //longitud de relleno de cada número
 let prefijo  = "01";        //prefijo número
-let numeros  = [37,92,10,20,324]; //números de ejemplo
+let numeros  = [37,92,10,20]; //números de ejemplo
 for numero in numeros {
     let original = String(numero)
     let relleno = prefijo + original.left(total: longitud, cadena: "0")
