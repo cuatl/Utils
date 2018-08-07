@@ -7,6 +7,8 @@
    }
    echo "\n* datos de archivo recibido\n";
    print_r($_FILES['archivo']);
+   // con la información anterior ya se puede hacer lo que sea con el archivo, mover, crear thumbnails etc
+   //
    //lo siguiente, extrae información IPTC de la imagen.
    if(function_exists('getimagesize')&&function_exists('iptcparse')) {
       echo "\nInformación IPTC:\n";
