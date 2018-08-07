@@ -20,7 +20,7 @@
          '2#005'=>'Lens ID',
          '2#095'=>'Estado',
          '2#090'=>'Ciudad',
-         '2#120'=>'Título',
+         '2#105'=>'Título',
          '2#025'=>'Palabras',
          '2#120'=>'Descripción',
          ];
