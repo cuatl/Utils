@@ -1,7 +1,7 @@
 # envía archivo/s con PHP a servidor web
 
-Envia imagen desde línea de comandos a forumario web (PHP), recibe el archivo
-y devuelve URL de publicación.
+Envia imagen desde línea de comandos a formulario web (PHP), recibe el archivo
+y devuelve URL de publicación, además de información IPTC en caso de poderse leer.
 
 Más información: 
 
