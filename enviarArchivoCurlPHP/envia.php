@@ -1,7 +1,7 @@
 <?php
    /*
    * envía archivo (imagen) a formulario WWW en PHP desde línea de comandos
-   * @ToRo https://tar.mx 
+   * @ToRo https://tar.mx  
    */
    $url = "https://tar.mx/apps/testupload/"; //url que recibe el archivo
    $file = "test.jpg"; //archivo a enviar, o se puede utilizar: envia.php archivo.jpg
